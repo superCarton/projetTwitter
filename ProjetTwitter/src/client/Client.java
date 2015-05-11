@@ -58,7 +58,11 @@ public class Client {
 	    		   		+ "2 : retwitter\n"
 	    		   		+ "3 : deconnecter\n");
 	    		   
-	    		   choice = Integer.parseInt(buff.readLine());
+	    		   try {
+	    			   choice = Integer.parseInt(buff.readLine());
+	    		   } catch (java.lang.NumberFormatException e){
+	    			   choice = -1;
+	    		   }
 	    		   
 	    		   switch (choice){
 		    		   case 1 : {

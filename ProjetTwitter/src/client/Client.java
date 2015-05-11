@@ -47,9 +47,41 @@ public class Client {
 	    		   if (!connected) System.out.println("Mauvais user/mdp");
 	    	   }
 	    	   
-	    	   System.out.println("\n------------ Bienvenue sur TT " + userName + " ----------\n");
+	    	   System.out.println("\n-------- Bienvenue sur Twitter Mr. " + userName + " -----\n");
 	    	   
+	    	   /* PARTIE ECHANGES */
+	    	   int choice = 0;
+	    	   while (connected){
+	    		   
+	    		   System.out.println("Commandes disponibles : \n"
+	    		   		+ "1 : twitter\n"
+	    		   		+ "2 : retwitter\n"
+	    		   		+ "3 : deconnecter\n");
+	    		   
+	    		   choice = Integer.parseInt(buff.readLine());
+	    		   
+	    		   switch (choice){
+		    		   case 1 : {
+		    			   System.out.println("twitter");
+		    			   instanceServeur.twitter(userName, "");
+		    			   break;
+		    		   	}
+		    		   case 2 : {
+		    			   System.out.println("ReTwitter");
+		    			   instanceServeur.reTwitter(userName, "");
+		    			   break;
+		    		   }
+		    		   case 3 : {
+		    			   System.out.println("Deconnexion");
+		    			   connected = false;
+		    			   break;
+		    		   }
+		    		   default : System.err.println("Valeur interdite");
+	    		   }
+	    		   
+	    	   }
 	    	   
+	    	   System.out.println("\n------------ A bientot sur Twitter ----------\n");
 	    	   
 	    	   
 	       } else {

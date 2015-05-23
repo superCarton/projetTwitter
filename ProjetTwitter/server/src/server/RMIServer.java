@@ -39,29 +39,54 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
 
   }
 
+  /**
+   * Je considere que "Twitter" correspond a pour chaque tag contenu dans le message, 
+   * le message est rajouté a la queue correspondant a chaque tag.
+   * Le message est egalement rajouté a la queue de l'utilisation qui envoie ce message. 
+   * Exemple: 
+   * utilisation = "didier"
+   * message = "Bonjour @polytechnicois comment allez vous apres ces @partiels?"
+   * le "message" sera ajouté a la queue "didier", "polytechnicois" et "partiels"
+   *
+   * Si le tag existe deja, le message sera ajouté a la queue correspondante, sinon, la queue sera cree puis
+   * le message ajouté a la queue.
+   *
+   */
   @Override
   public void twitter(String user, String message) throws RemoteException {
     /*
-     * Parse les tag dans les message
+     * Parse les tag dans les message, et oui, dans notre "Twitter" nous n'utilison pas les "#" mais les "@"
      */
     Pattern p = Pattern.compile("@(\\w+)");
     Matcher m = p.matcher(message);
     while(m.find()){
       try{
-      publisher.publier(m.group(1),message); 
+        publisher.publier(m.group(1),message); 
       }catch(Exception e){
-      System.out.println(e.getMessage());
+        System.out.println(e.getMessage());
       }
       System.out.println(m.group(1));
     }
+    reTwitter(user, message);
   }
 
+  /**
+   * Je considere que "retwitter" correspond a mettre un message uniquement dans la queue de l'utilisateur
+   * qui le publie.
+   * Exemple: 
+   * Utilisation =  "didier"
+   * Retwitter du message "Bonjour @polytechnicois comment allez vous apres ces @partiels?"
+   * le "message" sera ajouté a la queue "didier" uniquement.
+   *
+   */
   @Override
   public void reTwitter(String user, String message) throws RemoteException {
-    // TODO Auto-generated method stub
+    try{
+      publisher.publier(user,message);
+    }catch(Exception e){
+      System.out.println(e.getMessage());
+    }
 
   }
-
-
 
 }

@@ -1,3 +1,4 @@
+package client;
 import java.util.Hashtable;
 
 import javax.jms.ConnectionFactory;
@@ -16,69 +17,63 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class Sub implements javax.jms.MessageListener{
 
-    private javax.jms.Connection connect = null;
-    private javax.jms.Session receiveSession = null;
-    InitialContext context = null;
-    private void configurer() throws JMSException {
-        
-        try
-        {	// Create a connection
-        	Hashtable properties = new Hashtable();
-        	properties.put(Context.INITIAL_CONTEXT_FACTORY, 
-        	    "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
-        	properties.put(Context.PROVIDER_URL, "tcp://localhost:61616");
+  private javax.jms.Connection connect = null;
+  private javax.jms.Session receiveSession = null;
+  private String topicName; 
+  private InitialContext context = null;
+  public Sub(String topic) {
 
-        	context = new InitialContext(properties);
+    this.topicName = topic;
 
-        	javax.jms.ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
-        	connect = factory.createConnection();
-        
-        	this.configurerSouscripteur(); 
-            connect.start(); // on peut activer la connection. 
-        } catch (javax.jms.JMSException jmse){
-            jmse.printStackTrace();
-        } catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    try
+    {	// Create a connection
+      Hashtable properties = new Hashtable();
+      properties.put(Context.INITIAL_CONTEXT_FACTORY, 
+          "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
+      properties.put(Context.PROVIDER_URL, "tcp://localhost:61616");
+
+      context = new InitialContext(properties);
+
+      javax.jms.ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
+      connect = factory.createConnection();
+
+      this.configurerSouscripteur(); 
+      connect.start(); // on peut activer la connection. 
+    } catch (javax.jms.JMSException jmse){
+      jmse.printStackTrace();
+    } catch (NamingException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
-    private void configurerSouscripteur() throws JMSException, NamingException{
-    	// Pour consommer, il faudra simplement ouvrir une session 
-        receiveSession = connect.createSession(false,javax.jms.Session.AUTO_ACKNOWLEDGE);  
-    	Topic topic = (Topic) context.lookup("dynamicTopics/topicExo2");
-    	System.out.println("Nom du topic " + topic.getTopicName());
-        javax.jms.MessageConsumer topicReceiver = receiveSession.createConsumer(topic);//,"Conso");//,"typeMess = 'important'");
-        //topicReceiver.setMessageListener(this); 
-        //ESSAI d'une reception synchrone
-        connect.start(); // on peut activer la connection. 
-        while (true){
-        	Message m= topicReceiver.receive();
-        	System.out.print("recept synch: "); onMessage(m);
-        }
+  }
+  private void configurerSouscripteur() throws JMSException, NamingException{
+    // Pour consommer, il faudra simplement ouvrir une session 
+    receiveSession = connect.createSession(false,javax.jms.Session.AUTO_ACKNOWLEDGE);  
+    Topic topic = (Topic) context.lookup("dynamicTopics/"+topicName);
+    System.out.println("Nom du topic " + topic.getTopicName());
+    javax.jms.MessageConsumer topicReceiver = receiveSession.createConsumer(topic);//,"Conso");//,"typeMess = 'important'");
+    topicReceiver.setMessageListener(this); 
+    //ESSAI d'une reception synchrone
+
+    connect.start(); // on peut activer la connection. 
+    /*
+       while (true){
+       Message m= topicReceiver.receive();
+       System.out.print("recept synch: "); onMessage(m);
+       }*/
+  }
+
+  @Override
+  public void onMessage(Message message) {
+    // Methode permettant au souscripteur de consommer effectivement chaque msg recu
+    // via le topic auquel il a souscrit
+    try {
+      System.out.print("Recu un message du topic "+topicName+": "+((MapMessage)message).getString("message"));
+    } catch (JMSException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
-    
-	public static void main(String[] args) {
-		try {
-			(new Sub()).configurer();
-		} catch (JMSException e) {
-			e.printStackTrace();
-		}
-		
 
-	}
-
-	@Override
-	public void onMessage(Message message) {
-		// Methode permettant au souscripteur de consommer effectivement chaque msg recu
-		// via le topic auquel il a souscrit
-		try {
-			System.out.print("Recu un message du topic: "+((MapMessage)message).getString("nom"));
-			System.out.println(((MapMessage)message).getString("num"));
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+  }
 
 }

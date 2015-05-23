@@ -11,13 +11,11 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
 
   private static final long serialVersionUID=1L;
   private List<String> tags  = new ArrayList<String>();
-  private Map<String, String> userPassword;
+  private Map<String, String> userPassword = new HashMap<String,String>();
+  private Map<UUID,String> connectedUser = new HashMap<UUID,String>();
   private Pub publisher = new Pub();
   protected RMIServer() throws RemoteException {
-
     super();
-    userPassword = new HashMap<String, String>();
-
     // on ajoute des utilisateurs
     userPassword.put("user", "user");
   }
@@ -28,14 +26,16 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
   }
 
   @Override
-  public boolean connect(String user, String password) throws RemoteException {
+  public UUID connect(String user, String password) throws RemoteException {
 
     if (userPassword.containsKey(user) && userPassword.get(user).equals(password)){
       System.out.println("Connexion acceptee : " + user + "/" + password);
-      return true;
+       UUID identifiantUnique = UUID.randomUUID();
+       connectedUser.put(identifiantUnique, user);
+      return identifiantUnique;
     }
     System.out.println("Connexion refusee : " + user + "/" + password);
-    return false;
+    return null;
 
   }
 
@@ -53,7 +53,12 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
    *
    */
   @Override
-  public void twitter(String user, String message) throws RemoteException {
+  public boolean twitter(UUID identifiant, String message) throws RemoteException {
+    if(!connectedUser.containsKey(identifiant)){
+      System.out.println("Vous n'etes pas autorisé a tweeter");
+      return false;
+    }
+    
     /*
      * Parse les tag dans les message, et oui, dans notre "Twitter" nous n'utilison pas les "#" mais les "@"
      */
@@ -61,13 +66,15 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
     Matcher m = p.matcher(message);
     while(m.find()){
       try{
+        tags.add(m.group(1));
         publisher.publier(m.group(1),message); 
       }catch(Exception e){
         System.out.println(e.getMessage());
       }
       System.out.println(m.group(1));
     }
-    reTwitter(user, message);
+    return reTwitter(identifiant, message);
+    
   }
 
   /**
@@ -80,13 +87,21 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
    *
    */
   @Override
-  public void reTwitter(String user, String message) throws RemoteException {
+  public boolean reTwitter(UUID identifiant, String message) throws RemoteException {
+     if(!connectedUser.containsKey(identifiant)){
+      System.out.println("Vous n'etes pas autorisé a tweeter");
+      return false;
+    }
+
+    tags.add(connectedUser.get(identifiant));
     try{
-      publisher.publier(user,message);
+      publisher.publier(connectedUser.get(identifiant),message);
     }catch(Exception e){
       System.out.println(e.getMessage());
     }
 
+    return true;
   }
+
 
 }

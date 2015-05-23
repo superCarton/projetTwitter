@@ -35,7 +35,7 @@ public class Pub{
       context = new InitialContext(properties);
 
       javax.jms.ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
-      connect = factory.createConnection();
+      connect = factory.createConnection( "user","password" );
       sendSession = connect.createSession(false, javax.jms.Session.AUTO_ACKNOWLEDGE);
 
       //connect.start(); // on peut activer la connection. 

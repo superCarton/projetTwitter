@@ -15,6 +15,8 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
   private Map<UUID,String> connectedUser = new HashMap<UUID,String>();
     private Map<String, List<String>> tagsForUsers = new HashMap<String, List<String>>();
   private Pub publisher = new Pub();
+    private int id_courant = 0;
+    private Map<Integer, Tweet> listeTweets = new HashMap<Integer, Tweet>();
   
   protected RMIServer() throws RemoteException {
     super();
@@ -52,6 +54,7 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
         }
 
         connectedUser.remove(identifiant);
+        System.out.println("Deconnexion recue");
         return true;
     }
 
@@ -74,7 +77,8 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
       System.out.println("Vous n'etes pas autorisé a tweeter");
       return false;
     }
-    
+
+      String author = connectedUser.get(identifiant);
     /*
      * Parse les tag dans les message, et oui, dans notre "Twitter" nous n'utilison pas les "#" mais les "@"
      */
@@ -86,13 +90,16 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
         if(tags.indexOf(tag) == -1) {
           tags.add(tag);
         }
-        publisher.publier(tag,message);
 
+        publisher.publier(author, tag, message, id_courant);
       }catch(Exception e){
         System.out.println(e.getMessage());
       }
     }
-    return reTwitter(identifiant, message);
+      listeTweets.put(id_courant, new Tweet(author, message));
+      id_courant++;
+
+    return reTwitter(identifiant, id_courant-1);
     
   }
 
@@ -106,24 +113,34 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
    *
    */
   @Override
-  public boolean reTwitter(UUID identifiant, String message) throws RemoteException {
+  public boolean reTwitter(UUID identifiant, int id_tweet) throws RemoteException {
+
      if(!connectedUser.containsKey(identifiant)){
       System.out.println("Vous n'etes pas autorisé a tweeter");
       return false;
     }
+
       String tag = connectedUser.get(identifiant);
         if(tags.indexOf(tag) == -1) {
           tags.add(tag);
         }
 
+      if (!listeTweets.containsKey(id_tweet)){
+          System.out.println("L'id de ce tweet est introuvable");
+          return false;
+      }
+
+      Tweet t = listeTweets.get(id_tweet);
+
     try{
-      publisher.publier(tag,message);
+      publisher.publier(t.getAuthor(), tag, t.getMessage(), id_tweet);
     }catch(Exception e){
       System.out.println(e.getMessage());
     }
 
     return true;
   }
+
 
     /*
     * On enregistre les abonnements de tags pour chaque utilisateur

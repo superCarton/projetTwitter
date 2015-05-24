@@ -68,7 +68,7 @@ public class Sub implements javax.jms.MessageListener{
     // Methode permettant au souscripteur de consommer effectivement chaque msg recu
     // via le topic auquel il a souscrit
     try {
-      System.out.print("Nouveau post ["+topicName+"] : "+((MapMessage)message).getString("message"));
+      System.out.println("Nouveau post [" + topicName + "] de " + ((MapMessage)message).getString("author") + " : [" + ((MapMessage)message).getInt("id") + "] " +  ((MapMessage)message).getString("message"));
     } catch (JMSException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

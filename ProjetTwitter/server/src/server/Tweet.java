@@ -9,5 +9,13 @@ public class Tweet {
 		this.author = author;
 		this.message = message;
 	}
+
+	public String getMessage(){
+		return message;
+	}
+
+	public String getAuthor(){
+		return author;
+	}
 	
 }

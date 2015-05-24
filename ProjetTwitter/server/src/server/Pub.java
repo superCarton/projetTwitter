@@ -47,7 +47,7 @@ public class Pub{
     }
   }
 
-  public void publier(String tag, String message) throws JMSException{
+  public void publier(String author, String tag, String message, int id) throws JMSException{
 
     MessageProducer newsender = sender.get(tag);
     if(newsender == null){
@@ -63,6 +63,9 @@ public class Pub{
     //Fabriquer un message
     MapMessage mess = sendSession.createMapMessage();
     mess.setString("message",message);
+    mess.setString("author",author);
+    mess.setInt("id", id);
+
     //Poster ce message dans la queue
     newsender.send(mess); // equivaut a publier dans le topic
   }

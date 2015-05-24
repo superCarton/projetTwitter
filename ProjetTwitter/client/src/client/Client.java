@@ -90,8 +90,14 @@ public class Client {
                        break;
             }
             case 2 : {
-                       System.out.println("ReTwitter avec l'id du tweet");
-                       instanceServeur.reTwitter(identifiant, "");
+                       System.out.println("ReTwitter avec l'id du tweet [entrez l'id du tweet a retwitter]\n");
+                        int id;
+                    try {
+                        id = Integer.parseInt(buff.readLine());
+                    } catch (java.lang.NumberFormatException e){
+                        id = -1;
+                    }
+                       instanceServeur.reTwitter(identifiant, id);
                        break;
             }
             case 3: {

@@ -31,7 +31,7 @@ public class Pub{
       properties.put(Context.INITIAL_CONTEXT_FACTORY, 
           "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
       properties.put(Context.PROVIDER_URL, "tcp://localhost:61616");
-
+//properties.put(Context.PROVIDER_URL, "tcp://localhost:6616");
       context = new InitialContext(properties);
 
       javax.jms.ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");

@@ -31,7 +31,7 @@ public class Sub implements javax.jms.MessageListener{
       properties.put(Context.INITIAL_CONTEXT_FACTORY, 
           "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
       properties.put(Context.PROVIDER_URL, "tcp://localhost:61616");
-
+//properties.put(Context.PROVIDER_URL, "tcp://localhost:6616");
       context = new InitialContext(properties);
 
       javax.jms.ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
@@ -68,7 +68,7 @@ public class Sub implements javax.jms.MessageListener{
     // Methode permettant au souscripteur de consommer effectivement chaque msg recu
     // via le topic auquel il a souscrit
     try {
-      System.out.print("Recu un message du topic "+topicName+": "+((MapMessage)message).getString("message"));
+      System.out.print("Nouveau post ["+topicName+"] : "+((MapMessage)message).getString("message"));
     } catch (JMSException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

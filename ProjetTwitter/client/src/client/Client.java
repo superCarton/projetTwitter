@@ -53,18 +53,28 @@ public class Client {
           if (identifiant == null) System.out.println("Mauvais user/mdp");
         }
 
+        /* recuperation des abonnements */
+          List<String> tags = instanceServeur.getMyTags(identifiant);
+          for(int i = 0; i < tags.size(); i++){
+              subscripter.add(new Sub(tags.get(i)));
+          }
+
+
         System.out.println("\n-------- Bienvenue sur Twitter Mr. " + userName + " -----\n");
 
         /* PARTIE ECHANGES */
         int choice = 0;
         while (identifiant != null){
 
-          System.out.println("Commandes disponibles : \n"
+            System.out.println("\n--------------------------------------------");
+          System.out.println("\nCommandes disponibles : \n"
               + "1 : twitter\n"
               + "2 : retwitter\n"
-              + "3 : deconnecter\n"
-              + "4 : abonnement tag\n"
-              + "5 : liste tag\n");
+              + "3 : s'abonner\n"
+                  + "4 : mes abonnements\n"
+              + "5 : tous les tags\n"
+                  + "6 : deconnecter");
+            System.out.println("--------------------------------------------\n");
 
           try {
             choice = Integer.parseInt(buff.readLine());
@@ -74,36 +84,45 @@ public class Client {
 
           switch (choice){
             case 1 : {
-                       System.out.println("entrez le message a twitter: ");
+                       System.out.println("Entrez le message a twitter : ");
                        String message = buff.readLine();
                        instanceServeur.twitter(identifiant, message);
                        break;
             }
             case 2 : {
-                       System.out.println("ReTwitter");
+                       System.out.println("ReTwitter avec l'id du tweet");
                        instanceServeur.reTwitter(identifiant, "");
                        break;
             }
-            case 3 : {
-                       System.out.println("Deconnexion");
-                       identifiant = null;
-                       break;
-            }
-            case 4: {
-                     System.out.println("entrez le nom du tag auquel vous voulez etre abonne");
-                     String tagName = buff.readLine();
-                     subscripter.add(new Sub(tagName));
-                     break;
-                     
-            }
+            case 3: {
+                  System.out.println("Entrez le nom du tag auquel vous voulez vous abonner : ");
+                  String tagName = buff.readLine();
+                  subscripter.add(new Sub(tagName));
+                  instanceServeur.subscribe(identifiant, tagName);
+                  break;
+              }
+              case 4: {
+                  System.out.println("Les tags auquels je suis abonné :");
+                  List<String> tags2 = instanceServeur.getMyTags(identifiant);
+                  for(int i = 0; i < tags2.size(); i++){
+                      System.out.println(tags2.get(i));
+                  }
+                  break;
+              }
             case 5: {
-                  System.out.println("Liste des tags disponibles:");
-                  List<String> tags = instanceServeur.getTags();
-                  for(int i = 0; i < tags.size(); i++){
-                  System.out.println(tags.get(i));
+                  System.out.println("Tous les tags disponibles :");
+                  List<String> tags3 = instanceServeur.getTags();
+                  for(int i = 0; i < tags3.size(); i++){
+                  System.out.println(tags3.get(i));
                   }
                   break;
             }
+              case 6 : {
+                  System.out.println("Deconnexion");
+                  instanceServeur.deconnect(identifiant);
+                  identifiant = null;
+                  break;
+              }
             default : System.err.println("Valeur interdite");
           }
 

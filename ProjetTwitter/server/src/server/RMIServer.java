@@ -13,11 +13,17 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
   private List<String> tags  = new ArrayList<String>();
   private Map<String, String> userPassword = new HashMap<String,String>();
   private Map<UUID,String> connectedUser = new HashMap<UUID,String>();
+    private Map<String, List<String>> tagsForUsers = new HashMap<String, List<String>>();
   private Pub publisher = new Pub();
+  
   protected RMIServer() throws RemoteException {
     super();
     // on ajoute des utilisateurs
-    userPassword.put("user", "user");
+    userPassword.put("user1", "user1");
+	userPassword.put("user2", "user2");
+	userPassword.put("user3", "user3");
+	userPassword.put("user4", "user4");
+	userPassword.put("user5", "user5");
   }
 
   @Override
@@ -38,6 +44,16 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
     return null;
 
   }
+
+    public boolean deconnect(UUID identifiant) throws RemoteException{
+        if(!connectedUser.containsKey(identifiant)){
+            System.out.println("Vous n'etes pas connecté");
+            return false;
+        }
+
+        connectedUser.remove(identifiant);
+        return true;
+    }
 
   /**
    * Je considere que "Twitter" correspond a pour chaque tag contenu dans le message, 
@@ -103,5 +119,55 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
     return true;
   }
 
+    /*
+    * On enregistre les abonnements de tags pour chaque utilisateur
+     */
+    @Override
+    public boolean subscribe(UUID identifiant, String nomHashtag) throws RemoteException {
+
+        if(!connectedUser.containsKey(identifiant)){
+            System.out.println("Vous n'etes pas autorisé a souscrire");
+            return false;
+        }
+
+        List<String> tags;
+        String pseudo = connectedUser.get(identifiant);
+
+        if(!tagsForUsers.containsKey(pseudo)){
+
+            tags = new ArrayList<String>();
+        } else {
+            tags = tagsForUsers.get(pseudo);
+        }
+
+        if (tags.contains(nomHashtag)){
+            System.out.println("Vous etes deja abonnes a ce tag");
+            return false;
+        }
+
+        tags.add(nomHashtag);
+        tagsForUsers.put(pseudo, tags);
+
+        return true;
+    }
+
+    /* Obtenir la liste des tags auquels on est abonnés
+     */
+    @Override
+    public List<String> getMyTags(UUID identifiant) throws RemoteException{
+
+        if(!connectedUser.containsKey(identifiant)) {
+            System.out.println("Vous n'etes pas autorisé ");
+            return new ArrayList<String>();
+        }
+
+        String pseudo = connectedUser.get(identifiant);
+
+        if(!tagsForUsers.containsKey(pseudo)){
+            return new ArrayList<String>();
+        } else {
+            return tagsForUsers.get(pseudo);
+        }
+    }
 
 }

@@ -1,1 +1,1 @@
-grant { permission java.net.SocketPermission "127.0.0.1:1993","connect,accept,resolve";};
+grant { permission java.security.AllPermission;};

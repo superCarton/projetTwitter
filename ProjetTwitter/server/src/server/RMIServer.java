@@ -82,12 +82,15 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
     Matcher m = p.matcher(message);
     while(m.find()){
       try{
-        tags.add(m.group(1));
-        publisher.publier(m.group(1),message); 
+        String tag = m.group(1);
+        if(tags.indexOf(tag) == -1) {
+          tags.add(tag);
+        }
+        publisher.publier(tag,message);
+
       }catch(Exception e){
         System.out.println(e.getMessage());
       }
-      System.out.println(m.group(1));
     }
     return reTwitter(identifiant, message);
     
@@ -108,10 +111,13 @@ public class RMIServer extends UnicastRemoteObject implements ITwitter {
       System.out.println("Vous n'etes pas autorisé a tweeter");
       return false;
     }
+      String tag = connectedUser.get(identifiant);
+        if(tags.indexOf(tag) == -1) {
+          tags.add(tag);
+        }
 
-    tags.add(connectedUser.get(identifiant));
     try{
-      publisher.publier(connectedUser.get(identifiant),message);
+      publisher.publier(tag,message);
     }catch(Exception e){
       System.out.println(e.getMessage());
     }

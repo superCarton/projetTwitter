@@ -1,1 +1,6 @@
-grant { permission java.security.AllPermission;};
+grant codeBase "file:./build/jar/twitter-client.jar" {
+  permission java.security.AllPermission;
+  //permission java.net.SocketPermission "*:*", "connect,accept,resolve";
+//permission java.util.PropertyPermission "slf4j.detectLoggerNameMismatch", "read";
+ // permission java.io.FilePermission "error.log", "write,read";
+};

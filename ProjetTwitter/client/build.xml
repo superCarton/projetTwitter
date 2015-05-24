@@ -9,19 +9,23 @@
 
   <property name="main-class"  value="client.Client"/>
   <property name="lib.dir"     value="lib"/>
-
-  <path id="classpath">
-    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+ <path id="classpath">
+ <fileset dir="${lib.dir}"/>
   </path>
 
-
+<path id="project.class.path">
+  <pathelement location="${lib.dir}"/>
+  <fileset dir="${lib.dir}"/>
+  <pathelement path="${src.dir}"/>
+  <pathelement path="${classes.dir}"/>
+</path>
   <target name="clean">
     <delete dir="${build.dir}"/>
   </target>
 
   <target name="compile">
     <mkdir dir="${classes.dir}"/>
-    <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="project.class.path"/>
   </target>
 
   <target name="jar" depends="compile">
@@ -36,8 +40,8 @@
     <fileset dir="${basedir}">
       <include name="**/index.html"/>
       </fileset>
-      <!--<fileset dir="${classes.dir}" includes="**/*.class" />-->
-    <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+      <fileset dir="${lib.dir}" includes="**/*.class" />
+      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
     </jar>
   </target>
 

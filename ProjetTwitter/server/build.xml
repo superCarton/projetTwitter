@@ -31,7 +31,7 @@
         <attribute name="Main-Class" value="${main-class}"/>
       </manifest>
     <fileset dir="${basedir}">
-      <include name="*.json"/>
+      <include name="*.xml"/>
     </fileset>
     <fileset dir="${basedir}">
       <include name="**/index.html"/>

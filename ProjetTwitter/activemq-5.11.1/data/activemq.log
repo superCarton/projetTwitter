@@ -286,3 +286,113 @@ java.lang.SecurityException: User user is not authorized to create: topic://Acti
 2015-05-23 20:40:40,469 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-38804-1432406372306-0:1) is shutdown | org.apache.activemq.broker.BrokerService | Thread-25
 2015-05-23 20:40:40,471 | INFO  | Closing org.apache.activemq.xbean.XBeanBrokerFactory$1@31b35fff: startup date [Sat May 23 20:39:30 CEST 2015]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | Thread-25
 2015-05-23 20:40:40,493 | INFO  | Destroying Spring FrameworkServlet 'dispatcher' | /admin | Thread-25
+2015-05-24 17:20:47,766 | INFO  | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@2f931909: startup date [Sun May 24 17:20:47 CEST 2015]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | WrapperSimpleAppMain
+2015-05-24 17:20:50,342 | INFO  | PListStore:[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage] started | org.apache.activemq.store.kahadb.plist.PListStoreImpl | WrapperSimpleAppMain
+2015-05-24 17:20:50,433 | INFO  | Using Persistence Adapter: KahaDBPersistenceAdapter[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/kahadb] | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:20:50,945 | INFO  | KahaDB is version 5 | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:20:51,041 | INFO  | Recovering from the journal ... | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:20:51,045 | INFO  | Recovery replayed 14 operations from the journal in 0.067 seconds. | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:20:51,273 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-44289-1432480851074-0:1) is starting | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:20:51,404 | INFO  | Listening for connections at: tcp://yukikooozzy:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:20:51,411 | INFO  | Connector openwire started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:20:51,426 | INFO  | Listening for connections at: amqp://yukikooozzy:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:20:51,435 | INFO  | Connector amqp started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:20:51,445 | INFO  | Listening for connections at: stomp://yukikooozzy:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:20:51,453 | INFO  | Connector stomp started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:20:51,463 | INFO  | Listening for connections at: mqtt://yukikooozzy:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:20:51,470 | INFO  | Connector mqtt started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:20:51,823 | INFO  | Listening for connections at ws://yukikooozzy:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.ws.WSTransportServer | WrapperSimpleAppMain
+2015-05-24 17:20:51,824 | INFO  | Connector ws started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:20:51,828 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-44289-1432480851074-0:1) started | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:20:51,829 | INFO  | For help or more information please see: http://activemq.apache.org | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:20:51,831 | WARN  | Store limit is 102400 mb (current store usage is 0 mb). The data directory: /home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/kahadb only has 30434 mb of usable space - resetting to maximum available disk space: 30434 mb | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:20:51,833 | WARN  | Temporary Store limit is 51200 mb, whilst the temporary data directory: /home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage only has 30434 mb of usable space - resetting to maximum available 30434 mb. | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:20:52,610 | INFO  | ActiveMQ WebConsole available at http://0.0.0.0:8161/ | org.apache.activemq.web.WebConsoleStarter | WrapperSimpleAppMain
+2015-05-24 17:20:52,799 | INFO  | Initializing Spring FrameworkServlet 'dispatcher' | /admin | WrapperSimpleAppMain
+2015-05-24 17:20:53,475 | INFO  | jolokia-agent: No access restrictor found at classpath:/jolokia-access.xml, access to all MBeans is allowed | /api | WrapperSimpleAppMain
+2015-05-24 17:20:57,753 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-44289-1432480851074-0:1) is shutting down | org.apache.activemq.broker.BrokerService | Thread-25
+2015-05-24 17:20:57,761 | INFO  | Connector openwire stopped | org.apache.activemq.broker.TransportConnector | Thread-25
+2015-05-24 17:20:57,764 | INFO  | Connector amqp stopped | org.apache.activemq.broker.TransportConnector | Thread-25
+2015-05-24 17:20:57,767 | INFO  | Connector stomp stopped | org.apache.activemq.broker.TransportConnector | Thread-25
+2015-05-24 17:20:57,769 | INFO  | Connector mqtt stopped | org.apache.activemq.broker.TransportConnector | Thread-25
+2015-05-24 17:20:57,859 | INFO  | Connector ws stopped | org.apache.activemq.broker.TransportConnector | Thread-25
+2015-05-24 17:20:57,866 | INFO  | PListStore:[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage] stopped | org.apache.activemq.store.kahadb.plist.PListStoreImpl | Thread-25
+2015-05-24 17:20:57,867 | INFO  | Stopping async queue tasks | org.apache.activemq.store.kahadb.KahaDBStore | Thread-25
+2015-05-24 17:20:57,868 | INFO  | Stopping async topic tasks | org.apache.activemq.store.kahadb.KahaDBStore | Thread-25
+2015-05-24 17:20:57,870 | INFO  | Stopped KahaDB | org.apache.activemq.store.kahadb.KahaDBStore | Thread-25
+2015-05-24 17:20:58,270 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-44289-1432480851074-0:1) uptime 7.862 seconds | org.apache.activemq.broker.BrokerService | Thread-25
+2015-05-24 17:20:58,272 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-44289-1432480851074-0:1) is shutdown | org.apache.activemq.broker.BrokerService | Thread-25
+2015-05-24 17:20:58,274 | INFO  | Closing org.apache.activemq.xbean.XBeanBrokerFactory$1@2f931909: startup date [Sun May 24 17:20:47 CEST 2015]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | Thread-25
+2015-05-24 17:20:58,310 | INFO  | Destroying Spring FrameworkServlet 'dispatcher' | /admin | Thread-25
+2015-05-24 17:21:00,033 | INFO  | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@795c63c6: startup date [Sun May 24 17:21:00 CEST 2015]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | WrapperSimpleAppMain
+2015-05-24 17:21:01,212 | INFO  | PListStore:[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage] started | org.apache.activemq.store.kahadb.plist.PListStoreImpl | WrapperSimpleAppMain
+2015-05-24 17:21:01,245 | INFO  | Using Persistence Adapter: KahaDBPersistenceAdapter[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/kahadb] | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:01,589 | INFO  | KahaDB is version 5 | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:21:01,632 | INFO  | Recovering from the journal ... | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:21:01,636 | INFO  | Recovery replayed 2 operations from the journal in 0.025 seconds. | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:21:01,810 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-48765-1432480861665-0:1) is starting | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:01,846 | INFO  | Listening for connections at: tcp://yukikooozzy:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:01,851 | INFO  | Connector openwire started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:01,858 | INFO  | Listening for connections at: amqp://yukikooozzy:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:01,863 | INFO  | Connector amqp started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:01,871 | INFO  | Listening for connections at: stomp://yukikooozzy:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:01,875 | INFO  | Connector stomp started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:01,882 | INFO  | Listening for connections at: mqtt://yukikooozzy:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:01,886 | INFO  | Connector mqtt started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:02,010 | INFO  | Listening for connections at ws://yukikooozzy:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.ws.WSTransportServer | WrapperSimpleAppMain
+2015-05-24 17:21:02,011 | INFO  | Connector ws started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:02,015 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-48765-1432480861665-0:1) started | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:02,017 | INFO  | For help or more information please see: http://activemq.apache.org | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:02,019 | WARN  | Store limit is 102400 mb (current store usage is 0 mb). The data directory: /home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/kahadb only has 30434 mb of usable space - resetting to maximum available disk space: 30434 mb | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:02,021 | WARN  | Temporary Store limit is 51200 mb, whilst the temporary data directory: /home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage only has 30434 mb of usable space - resetting to maximum available 30434 mb. | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:02,479 | INFO  | ActiveMQ WebConsole available at http://0.0.0.0:8161/ | org.apache.activemq.web.WebConsoleStarter | WrapperSimpleAppMain
+2015-05-24 17:21:02,535 | INFO  | Initializing Spring FrameworkServlet 'dispatcher' | /admin | WrapperSimpleAppMain
+2015-05-24 17:21:02,822 | INFO  | jolokia-agent: No access restrictor found at classpath:/jolokia-access.xml, access to all MBeans is allowed | /api | WrapperSimpleAppMain
+2015-05-24 17:21:22,375 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-48765-1432480861665-0:1) is shutting down | org.apache.activemq.broker.BrokerService | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,378 | INFO  | Connector openwire stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,380 | INFO  | Connector amqp stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,383 | INFO  | Connector stomp stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,385 | INFO  | Connector mqtt stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,451 | INFO  | Connector ws stopped | org.apache.activemq.broker.TransportConnector | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,457 | INFO  | PListStore:[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage] stopped | org.apache.activemq.store.kahadb.plist.PListStoreImpl | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,458 | INFO  | Stopping async queue tasks | org.apache.activemq.store.kahadb.KahaDBStore | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,459 | INFO  | Stopping async topic tasks | org.apache.activemq.store.kahadb.KahaDBStore | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,461 | INFO  | Stopped KahaDB | org.apache.activemq.store.kahadb.KahaDBStore | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,724 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-48765-1432480861665-0:1) uptime 21.501 seconds | org.apache.activemq.broker.BrokerService | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,726 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-48765-1432480861665-0:1) is shutdown | org.apache.activemq.broker.BrokerService | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,727 | INFO  | Closing org.apache.activemq.xbean.XBeanBrokerFactory$1@795c63c6: startup date [Sun May 24 17:21:00 CEST 2015]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | ActiveMQ ShutdownHook
+2015-05-24 17:21:22,748 | INFO  | Destroying Spring FrameworkServlet 'dispatcher' | /admin | ActiveMQ ShutdownHook
+2015-05-24 17:21:26,367 | INFO  | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@2f931909: startup date [Sun May 24 17:21:26 CEST 2015]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | WrapperSimpleAppMain
+2015-05-24 17:21:27,546 | INFO  | PListStore:[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage] started | org.apache.activemq.store.kahadb.plist.PListStoreImpl | WrapperSimpleAppMain
+2015-05-24 17:21:27,584 | INFO  | Using Persistence Adapter: KahaDBPersistenceAdapter[/home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/kahadb] | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:27,965 | INFO  | KahaDB is version 5 | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:21:28,020 | INFO  | Recovering from the journal ... | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:21:28,027 | INFO  | Recovery replayed 5 operations from the journal in 0.028 seconds. | org.apache.activemq.store.kahadb.MessageDatabase | WrapperSimpleAppMain
+2015-05-24 17:21:28,206 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-49730-1432480888063-0:1) is starting | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:28,237 | INFO  | Listening for connections at: tcp://yukikooozzy:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:28,242 | INFO  | Connector openwire started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:28,252 | INFO  | Listening for connections at: amqp://yukikooozzy:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:28,259 | INFO  | Connector amqp started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:28,269 | INFO  | Listening for connections at: stomp://yukikooozzy:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:28,273 | INFO  | Connector stomp started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:28,280 | INFO  | Listening for connections at: mqtt://yukikooozzy:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | WrapperSimpleAppMain
+2015-05-24 17:21:28,284 | INFO  | Connector mqtt started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:28,404 | INFO  | Listening for connections at ws://yukikooozzy:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.ws.WSTransportServer | WrapperSimpleAppMain
+2015-05-24 17:21:28,405 | INFO  | Connector ws started | org.apache.activemq.broker.TransportConnector | WrapperSimpleAppMain
+2015-05-24 17:21:28,409 | INFO  | Apache ActiveMQ 5.11.1 (localhost, ID:yukikooozzy-49730-1432480888063-0:1) started | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:28,410 | INFO  | For help or more information please see: http://activemq.apache.org | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:28,412 | WARN  | Store limit is 102400 mb (current store usage is 0 mb). The data directory: /home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/kahadb only has 30434 mb of usable space - resetting to maximum available disk space: 30434 mb | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:28,414 | WARN  | Temporary Store limit is 51200 mb, whilst the temporary data directory: /home/yukikoo/Dev/ProgrammationReparti/projet/projetTwitter/ProjetTwitter/activemq-5.11.1/bin/linux-x86-64/../../data/localhost/tmp_storage only has 30434 mb of usable space - resetting to maximum available 30434 mb. | org.apache.activemq.broker.BrokerService | WrapperSimpleAppMain
+2015-05-24 17:21:28,901 | INFO  | ActiveMQ WebConsole available at http://0.0.0.0:8161/ | org.apache.activemq.web.WebConsoleStarter | WrapperSimpleAppMain
+2015-05-24 17:21:28,973 | INFO  | Initializing Spring FrameworkServlet 'dispatcher' | /admin | WrapperSimpleAppMain
+2015-05-24 17:21:29,285 | INFO  | jolokia-agent: No access restrictor found at classpath:/jolokia-access.xml, access to all MBeans is allowed | /api | WrapperSimpleAppMain
+2015-05-24 17:21:37,453 | WARN  | Transport Connection to: tcp://127.0.0.1:36995 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:36995@61616
+2015-05-24 17:32:45,113 | WARN  | Transport Connection to: tcp://127.0.0.1:37144 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37144@61616
+2015-05-24 17:33:29,122 | WARN  | Transport Connection to: tcp://127.0.0.1:37192 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37192@61616
+2015-05-24 17:34:02,078 | WARN  | Transport Connection to: tcp://127.0.0.1:37209 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37209@61616
+2015-05-24 17:34:27,250 | WARN  | Transport Connection to: tcp://127.0.0.1:37213 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37213@61616
+2015-05-24 17:39:03,621 | WARN  | Transport Connection to: tcp://127.0.0.1:37285 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37285@61616
+2015-05-24 17:41:34,046 | WARN  | Transport Connection to: tcp://127.0.0.1:37306 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37306@61616
+2015-05-24 17:42:49,797 | WARN  | Transport Connection to: tcp://127.0.0.1:37408 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37408@61616
+2015-05-24 17:43:40,916 | WARN  | Transport Connection to: tcp://127.0.0.1:37422 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37422@61616
+2015-05-24 18:21:28,661 | WARN  | Transport Connection to: tcp://127.0.0.1:37455 failed: java.io.EOFException | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///127.0.0.1:37455@61616
